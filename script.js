@@ -16,13 +16,13 @@ function getPasswordLengthFromUser() {
 }
 
 function getPasswordStyleFromUser() {
-  var passwordType = prompt("Would you like your password to include Uppercase,lowercase and special characters?")
-  if (passwordType = null){
-    return;
-    } else{
-  return passwordType;
-    } 
-  }
+  var passwordType = confirm("Would you like your password to include Uppercase,lowercase and special characters?")
+  // if (passwordType = false){
+  //   return false;
+  //   } else {
+  // return true;
+  //   } 
+  // }
 
 function createPasswordNumbers(passwordLength) {
   var results = "";
@@ -32,7 +32,7 @@ function createPasswordNumbers(passwordLength) {
     results += passwordNumber.charAt(Math.floor(Math.random()*lengthOfPassword));
   }return results;
 }
-function createPasswordType(passwordLength, passwordType) {
+function createPasswordType(passwordLength){
   var results = "";
   var withTypes =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789!@#$%&abcdefghijklmnopqrstuvwxyz";
@@ -53,17 +53,19 @@ function writePassword() {
 
 function generatePassword() {
   var passwordLength = getPasswordLengthFromUser();
-  
-   var passwordType = getPasswordStyleFromUser
-  getPasswordStyleFromUser(); 
+
+   var passwordType = getPasswordStyleFromUser();
+ 
   if (passwordType === false) {
     return  createPasswordNumbers(passwordLength);
+    
   }
-  else{
-    return  createPasswordType(passwordLength,passwordType); 
+  else {
+    
+    return  createPasswordType(passwordLength);
   }
 
  
 }
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword)
