@@ -7,7 +7,7 @@ function getPasswordLengthFromUser() {
   var howManyNumbers = prompt(
     "Please select a password length between 8 and 128"
   );
-  console.log(howManyNumbers);
+
   if (howManyNumbers < 8 || howManyNumbers > 128) {
     return getPasswordLengthFromUser();
   } else {
@@ -24,26 +24,24 @@ function getPasswordStyleFromUser() {
     } 
   }
 
-
-
 function createPasswordNumbers(passwordLength) {
   var results = "";
   var passwordNumber = "0123456789";
-  for (var i = 1; i < passwordLength ; i++)
-    results += passwordNumber.charAt(Math.floor(Math.random()*passwordLength));
-  return results;
+  var lengthOfPassword = passwordNumber.length;
+  for (var i = 1; i < passwordLength ; i++){
+    results += passwordNumber.charAt(Math.floor(Math.random()*lengthOfPassword));
+  }return results;
 }
 function createPasswordType(passwordLength, passwordType) {
   var results = "";
   var withTypes =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789!@#$%&abcdefghijklmnopqrstuvwxyz";
-  for (var i = 0; i < passwordLength; i++)
-    results += characters.charAt(Math.floor(Math.random()));
+    var typeLength = withTypes.length;
+  for (var i = 0; i < passwordLength; i++){
+    results += withTypes.charAt(Math.floor(Math.random()*typeLength));
+  }
     return results;
-}
-
-
-
+  }
 
 // Write password to the #password input
 function writePassword() {
@@ -54,12 +52,18 @@ function writePassword() {
 }
 
 function generatePassword() {
-  console.log("you clicked me");
   var passwordLength = getPasswordLengthFromUser();
-  createPasswordNumbers(passwordLength);
-  getPasswordStyleFromUser();
+  
+   var passwordType = getPasswordStyleFromUser
+  getPasswordStyleFromUser(); 
+  if (passwordType === false) {
+    return  createPasswordNumbers(passwordLength);
+  }
+  else{
+    return  createPasswordType(passwordLength,passwordType); 
+  }
 
-  return createPasswordNumbers(passwordLength);
+ 
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
