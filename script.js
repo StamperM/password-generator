@@ -17,12 +17,12 @@ function getPasswordLengthFromUser() {
 
 function getPasswordStyleFromUser() {
   var passwordType = confirm("Would you like your password to include Uppercase,lowercase and special characters?")
-  // if (passwordType = false){
-  //   return false;
-  //   } else {
-  // return true;
-  //   } 
-  // }
+  if (passwordType === false){
+    return false;
+    } else {
+  return true;
+    } 
+  }
 
 function createPasswordNumbers(passwordLength) {
   var results = "";
